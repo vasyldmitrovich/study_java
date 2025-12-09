@@ -1,3 +1,4 @@
+package src.com.idk.edu01_intro;
 import java.util.Scanner;
 
 public class MathEnhancer {
