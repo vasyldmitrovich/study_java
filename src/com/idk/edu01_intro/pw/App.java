@@ -13,7 +13,7 @@ public class App {
     public static void task1() {
         System.out.print("Enter the radius of the flower bed: ");
         double radius = scanner.nextDouble();
-        scanner.nextLine(); // зчитати залишок після nextDouble
+        scanner.nextLine(); // read the remaining input after nextDouble
 
         double perimeter = 2 * Math.PI * radius;
         double area = Math.PI * radius * radius;
@@ -43,7 +43,7 @@ public class App {
             System.out.printf("Enter duration in minutes for call %d: ", i + 1);
             double duration = scanner.nextDouble();
 
-            scanner.nextLine(); // зчитати залишок після nextDouble
+            scanner.nextLine(); // read the remaining input after nextDouble
 
             costs[i] = costPerMinute * duration;
             totalCost += costs[i];

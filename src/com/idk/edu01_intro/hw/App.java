@@ -18,7 +18,7 @@ public class App {
             try {
                 return Double.parseDouble(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number (наприклад 12.5).");
+                System.out.println("Invalid input. Please enter a valid number (for example, 12.5).");
             }
         }
     }
@@ -29,7 +29,7 @@ public class App {
             try {
                 return Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid integer (наприклад 7).");
+                System.out.println("Invalid input. Please enter a valid integer (for example, 7).");
             }
         }
     }
