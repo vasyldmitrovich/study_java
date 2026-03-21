@@ -71,21 +71,27 @@ public class App {
             again = scanner.next();
         } while (again.equalsIgnoreCase("y"));
     }
-
     public static void hw3_carsLogic() {
         System.out.println("\n--- HW 3: Cars ---");
-        Car[] cars = {
-            new Car("Audi", 2020, 2.0),
-            new Car("BMW", 2015, 3.0),
-            new Car("Tesla", 2022, 0.0),
-            new Car("Lanos", 2008, 1.5)
-        };
+        // Викликаємо метод замість прямого створення масиву
+        Car[] cars = getCarsData();
+
         int y = getInt("Search year: ");
         for (Car c : cars) if (c.year == y) System.out.println(c);
-        
+
         System.out.println("Sorted by year:");
         Arrays.sort(cars, (c1, c2) -> Integer.compare(c1.year, c2.year));
         for (Car c : cars) System.out.println(c);
+    }
+
+    // Новий метод, який повертає дані (як просив викладач)
+    public static Car[] getCarsData() {
+        return new Car[]{
+                new Car("Audi", 2020, 2.0),
+                new Car("BMW", 2015, 3.0),
+                new Car("Tesla", 2022, 0.0),
+                new Car("Lanos", 2008, 1.5)
+        };
     }
 
     public static void hw4_guessGame() {
