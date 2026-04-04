@@ -1,66 +1,63 @@
 package com.idk.edu06_OOP_Part1.pw;
 
-import com.idk.edu06_OOP_Part1.imports.*; // Імпорт для Завдання 3*
+import java.util.Objects;
 
+/**
+ * Main application for 'pw' package.
+ * Demonstrates Car hierarchy.
+ */
 public class App {
-
     public static void main(String[] args) {
-        // Використання args для усунення варнінгу
-        if (args.length > 0) System.out.println("Аргументи: " + args.length);
-
-        // --- Завдання 2: Автомобілі ---
-        System.out.println("--- Cars ---");
-        Car[] cars = {
-                new Truck("Volvo FH", 120, 2022),
-                new Sedan("BMW M5", 250, 2023)
-        };
-        for (Car c : cars) {
-            c.printInfo();
-            c.run();
-            c.stop();
-        }
-
-        // --- Завдання 3*: Геометрія ---
-        System.out.println("\n--- Geometry ---");
-        Line[] lines = {
-                new Line(new Point(0, 0), new Point(5, 5)),
-                new ColorLine(new Point(1, 1), new Point(10, 10), "Blue")
-        };
-        for (Line l : lines) {
-            l.print(); // Виклик методу print()
-        }
+        Car truck = new Truck("Volvo", 2022, 110);
+        truck.run();
+        System.out.println(truck);
     }
 }
 
-// Абстрактний клас Car
 abstract class Car {
-    // Поля моделі
-    public String model;
-    public int maxSpeed;
-    public int yearOfProduction;
+    private String model;
+    private int year; // Changed from yearOfProduction to match your test
+    private int maxSpeed;
 
-    public Car(String model, int maxSpeed, int yearOfProduction) {
+    public Car() {}
+    public Car(String model, int year, int maxSpeed) {
         this.model = model;
+        this.year = year;
         this.maxSpeed = maxSpeed;
-        this.yearOfProduction = yearOfProduction;
     }
 
-    public abstract void run(); // Абстрактні методи
-    public abstract void stop();
+    public abstract void run();
 
-    public void printInfo() {
-        System.out.println(model + " (" + yearOfProduction + ") Max Speed: " + maxSpeed);
+    public String getModel() { return model; }
+    public void setModel(String m) { this.model = m; }
+    public int getYear() { return year; }
+    public void setYear(int y) { this.year = y; }
+    public int getMaxSpeed() { return maxSpeed; }
+    public void setMaxSpeed(int s) { this.maxSpeed = s; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return year == car.year && maxSpeed == car.maxSpeed && Objects.equals(model, car.model);
     }
+
+    @Override
+    public int hashCode() { return Objects.hash(model, year, maxSpeed); }
+
+    @Override
+    public String toString() { return "Car{model='" + model + "', year=" + year + "}"; }
 }
 
 class Truck extends Car {
-    public Truck(String m, int s, int y) { super(m, s, y); }
-    @Override public void run() { System.out.println(model + " is hauling cargo..."); }
-    @Override public void stop() { System.out.println(model + " truck stopped."); }
+    public Truck() { super(); }
+    public Truck(String m, int y, int s) { super(m, y, s); }
+    @Override public void run() { System.out.println("Truck is moving"); }
 }
 
 class Sedan extends Car {
-    public Sedan(String m, int s, int y) { super(m, s, y); }
-    @Override public void run() { System.out.println(model + " is cruising..."); }
-    @Override public void stop() { System.out.println(model + " sedan stopped."); }
+    public Sedan() { super(); }
+    public Sedan(String m, int y, int s) { super(m, y, s); }
+    @Override public void run() { System.out.println("Sedan is moving fast"); }
 }
