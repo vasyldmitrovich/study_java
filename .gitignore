@@ -82,7 +82,7 @@ workspace.xml
 /**/.idea/
 /**/out/
 /**/shelf/
-/**/workspace.xml
+/.idea/workspace.xml
 /**/*.iml
 /**/*.ucls
 
